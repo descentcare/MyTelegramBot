@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from config import TOKEN, CREATORID
-import subprocess, os, eyed3
+import subprocess, os, eyed3, wildMagic
 from telegram import Update
 from telegram.ext import (
         ApplicationBuilder,
@@ -39,15 +39,13 @@ async def ytdlm(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         await update.message.reply_text("You are not my creator so you can't use this command")
 async def wild_magic(update, context):
     try:
-        magic = str(subprocess.check_output(["wm"]), 'utf-8')
-        await update.message.reply_text(magic)
+        await update.message.reply_text(wildMagic.wm())
     except:
         pass
 
 async def text_handler(update, context):
     try:
-        #await update.message.reply_text("I do nothing in this circumstances")
-        await update.message.reply_text(update)
+        await update.message.reply_text("I do nothing in this circumstances")
     except:
         pass
 
